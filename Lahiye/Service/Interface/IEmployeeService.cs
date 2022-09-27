@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Lahiye.Service.Interface
 {
-    public interface IEmployeeService:IBranchService,IBankService<Employee>
+    public interface IEmployeeService:IBankService<Employee>
     {
                      //здесь нечего нет 
     }

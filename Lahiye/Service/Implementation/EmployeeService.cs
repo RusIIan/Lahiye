@@ -8,7 +8,7 @@ using System.Text;
 
 namespace Lahiye.Service.Implementation
 {
-    public class EmployeeService:IBankService,IEmployeeService
+    public class EmployeeService:IBankService<Employee>,IEmployeeService
     {
         private Generic_Bank<Employee> employees;
 
@@ -16,7 +16,8 @@ namespace Lahiye.Service.Implementation
         {
             employees = new Generic_Bank<Employee>();
         }
-        public void Created(Employee entity)
+
+        public void Create(Employee entity)
         {
             employees.Datas.Add(entity);
         }
@@ -26,11 +27,11 @@ namespace Lahiye.Service.Implementation
             employee.SoftDelete = true;
             GetAll();
         }
-        public void Get(string filter,int salary)
+        public void Get(string entity)
         {
-            Employee employee= employees.Datas.Find(x => x.Name.Contains(filter.ToLower().Trim())
-            || x.Surname.Contains(filter.ToLower().Trim())||x.Professin.Contains(filter.ToLower().Trim()));
-            Console.WriteLine(employee.Name+ " "+ employee.Surname );
+            Employee employee = employees.Datas.Find(x => x.Name.Contains(entity.ToLower().Trim())
+             || x.Surname.Contains(entity.ToLower().Trim()) || x.Professin.Contains(entity.ToLower().Trim()));
+            Console.WriteLine(employee.Name + " " + employee.Surname);
         }
         public void GetAll()
         {
@@ -55,6 +56,11 @@ namespace Lahiye.Service.Implementation
         }
 
         public void TransferMoney()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update()
         {
             throw new NotImplementedException();
         }

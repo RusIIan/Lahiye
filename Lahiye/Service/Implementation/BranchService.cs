@@ -15,6 +15,13 @@ namespace Lahiye.Service.Implementation
         {
             _Bank = new Generic_Bank<Branch>();
         }
-
+        public void Create(Branch branch) 
+        {
+            _Bank.Datas.Add(branch);
+        }
+        public void Delete()
+        {
+            Branch branch;
+        }
     }
 }

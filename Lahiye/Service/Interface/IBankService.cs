@@ -10,7 +10,7 @@ namespace Lahiye.Service.Interface
         void Create(T entity);
         void Delete(string name);
         void Update();
-        void Get();
+        void Get(string entity);
         void GetAll();
     }
 }
