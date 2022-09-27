@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Lahiye.Service.Implementation
 {
-    public class BranchService
+    public class BranchService:IBankService<Branch>,IBranchService
     {
         private Generic_Bank<Branch> _Bank;
 
@@ -19,9 +19,45 @@ namespace Lahiye.Service.Implementation
         {
             _Bank.Datas.Add(branch);
         }
-        public void Delete()
+        public void Delete(string name)
         {
-            Branch branch;
+            Branch branch = _Bank.Datas.Find(d=>d.Name.ToLower().Trim()==name.ToLower().Trim());
+            branch.SoftDelete = false;
+        }
+
+        public void Get(string entity)
+        {
+            Branch branch = _Bank.Datas.Find();
+        }
+
+        public void GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void GetProfit()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void HireEmployee()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void TransferEmployee()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void TransferMoney()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update()
+        {
+            throw new NotImplementedException();
         }
     }
 }
