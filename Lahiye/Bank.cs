@@ -12,17 +12,24 @@ namespace Lahiye
         {
 
             Console.WriteLine("                                              Welcome the Pasha Bank");
-            Console.WriteLine("\n1:    Create Employee");
-            Console.WriteLine("\n2:    Create Employee");
-            /*int command = int.Parse(Console.ReadLine());
-            switch (command)
+           
+            Manager manager = new Manager();
+            string userlogin = Console.ReadLine();
+            int userkod = int.Parse(Console.ReadLine());
+            if (manager.username==userlogin&&manager.userpassword==userkod)
             {
-                default:
-                    break;
-            }*/
+                int command = int.Parse(Console.ReadLine());
+                switch (command)
+                {
+                    
+                }
+            }
+            else
+            {
+                Console.WriteLine("Involid password ");
+            }
 
-            
-            
+
 
         }
     }

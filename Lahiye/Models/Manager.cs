@@ -8,5 +8,7 @@ namespace Lahiye.Models
     {
         public string Surname { get; set; }
 
+        public string username = "Ruslan";
+        public int userpassword = 2482;
     }
 }

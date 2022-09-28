@@ -31,7 +31,7 @@ namespace Lahiye.Service.Implementation
         {
             Employee employee = _employees.Datas.Find(x => x.Name.Contains(entity.ToLower().Trim())
              || x.Surname.Contains(entity.ToLower().Trim()) || x.Professin.Contains(entity.ToLower().Trim()));
-            Console.WriteLine(employee.Name + " " + employee.Surname);
+            Console.WriteLine(employee.Name + " " + employee.Surname+ " " +employee.Professin);
         }
         public void GetAll()
         {
@@ -41,9 +41,11 @@ namespace Lahiye.Service.Implementation
             }
         }
 
-        public void Update()
+        public void Update(string name,decimal salary, string profession)
         {
-            throw new NotImplementedException();
+            Employee employee = _employees.Datas.Find(u=>u.Name.ToLower().Trim()==name.ToLower().Trim());
+            employee.Salary = salary;
+            employee.Professin = profession;
         }
     }
 }

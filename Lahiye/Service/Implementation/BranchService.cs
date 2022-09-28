@@ -67,9 +67,11 @@ namespace Lahiye.Service.Implementation
 
         }
 
-        public void Update()
+        public void Update(string name,decimal budget,string address)
         {
-            throw new NotImplementedException();
+            Branch branch = _Bank.Datas.Find(u=>u.Name.ToLower().Trim()==name.Trim().ToLower());
+            branch.Budget = budget;
+            branch.Address = address;
         }
     }
 }

@@ -9,7 +9,7 @@ namespace Lahiye.Service.Interface
     { 
         void Create(T entity);
         void Delete(string name);
-        void Update();
+        void Update(string text,decimal money, string info);
         void Get(string entity);
         void GetAll();
     }
