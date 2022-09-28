@@ -6,11 +6,15 @@ namespace Lahiye.Models
 {
     public  class Employee:BaseEntity
     {
-         public string Surname { get; set; }
-         public int Salary { get; set; }
+        internal decimal budget;
+
+        public string Surname { get; set; }
+         public decimal Salary { get; set; }
          public string Professin { get; set; }
          public Branch branch { get; set; }
-        public Employee(string name, string surname, int salary,string professin)
+        public decimal Budget { get; internal set; }
+
+        public Employee(string name, string surname, decimal salary,string professin)
         {
             this.Name = name;
             this.Surname = surname;

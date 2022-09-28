@@ -7,9 +7,16 @@ namespace Lahiye.Models
     public class Branch:BaseEntity
     {
         //Filial
-        public string Name { get; set; }
         public double Budget { get; set; }
         public string Address { get; set; }
-        public List<Employee> employees { get; set;  }
+        public List<Employee> Employees { get; set;  }
+        public Branch(string name,double budget,string address)
+        {
+            this.Name = name;
+            this.Budget = budget;
+            this.Address = address;
+            this.SoftDelete = false;
+            this.Employees = new List<Employee>();
+        }
     }
 }

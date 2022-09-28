@@ -5,10 +5,10 @@ using System.Text;
 
 namespace Lahiye.DataBase
 {
-    public class Generic_Bank<T>
+    public class Bank_G<T>
     {
         public List<T> Datas = new List<T>();
-        public Generic_Bank()
+        public Bank_G()
         {
             Datas = new List<T>();
         }
