@@ -7,10 +7,10 @@ namespace Lahiye.Models
     public class Branch:BaseEntity
     {
         //Filial
-        public double Budget { get; set; }
+        public decimal Budget { get; set; }
         public string Address { get; set; }
         public List<Employee> Employees { get; set;  }
-        public Branch(string name,double budget,string address)
+        public Branch(string name,decimal budget,string address)
         {
             this.Name = name;
             this.Budget = budget;
