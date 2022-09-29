@@ -19,6 +19,20 @@ namespace Lahiye.Service.Implementation
         public void Create(Branch branch)
         {
             _Bank.Datas.Add(branch);
+            Console.Clear();
+            Console.WriteLine("--- Create Branch ---");
+            Console.Write("Please enter the Name: ");
+            string name = Console.ReadLine();
+            Console.Write("Please enter the Budget: ");
+            decimal budger = decimal.Parse(Console.ReadLine());
+            Console.Write("Please enter the Address: ");
+            string address = Console.ReadLine();
+            branch.Name = name;
+            branch.Budget = budger;
+            branch.Address = address;
+            Branch.AllBranch.Add(branch);
+            Console.Clear();
+            
         }
         public void Delete(string name)
         {
@@ -57,14 +71,43 @@ namespace Lahiye.Service.Implementation
             throw new NotImplementedException();
         }
 
-        public void TransferEmployee()
+        public void TransferEmployee(string name, string name1, Employee name2)
         {
-            throw new NotImplementedException();
+            Employee employee = new Employee();
+            Branch branch = new Branch();
+            Branch branch1 = new Branch();
+            branch = _Bank.Datas.Find(x =>x.Name ==employee.Name);
+            branch1 = _Bank.Datas.Find(x => x.Name == employee.Name);
+
+
         }
 
         public void TransferMoney()
         {
+            Console.Clear();
+            Console.WriteLine("---Trasfer Money---");
+            Console.Write("Please enter your Name: ");
+            string yourname = Console.ReadLine();
+            Console.Write("Please enter the Name of the person you would like to tranfer funds to: ");
+            string name = Console.ReadLine();
+            Console.Write("Enter the amount of funds you would like to transfer: ");
+            string amount = Console.ReadLine();
+            Employee employee = new Employee();
+            foreach (Branch Transfer in Branch.AllBranch)
+            {
+                if (employee.Name==name)
+                {
+                    employee.Salary -= Transfer.Budget;
+                }
+            }
 
+            foreach (Branch Transfer in Branch.AllBranch)
+            {
+                if (Transfer.Name==employee.Name)
+                {
+                    employee.Salary+=Transfer.Budget;
+                }
+            }
         }
 
         public void Update(string name,decimal budget,string address)

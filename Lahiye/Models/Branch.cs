@@ -7,16 +7,20 @@ namespace Lahiye.Models
     public class Branch:BaseEntity
     {
         //Filial
+        private static List<Branch> branches = new List<Branch>();
         public decimal Budget { get; set; }
         public string Address { get; set; }
         public List<Employee> Employees { get; set;  }
-       /* public Branch(string name,decimal budget,string address,List<Employee> employees)
+        public Branch()
         {
-            this.Name  name;
-            this.Budget = budget;
-            this.Address = address;
-            this.SoftDelete = false;
-            this.Employees = new List<Employee>();
-        }*/
+            branches = new List<Branch>();
+        }
+        public static List<Branch> AllBranch
+        {
+            get
+            {
+                return branches;
+            }
+        }
     }
 }

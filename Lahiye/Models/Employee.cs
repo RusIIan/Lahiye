@@ -6,7 +6,7 @@ namespace Lahiye.Models
 {
     public  class Employee:BaseEntity
     {
-        internal decimal budget;
+        
 
          public string Surname { get; set; }
          public decimal Salary { get; set; }

@@ -10,6 +10,6 @@ namespace Lahiye.Service.Interface
         void HireEmployee();
         void GetProfit(Branch entity);
         void TransferMoney();
-        void TransferEmployee();
+        void TransferEmployee(string name, string name1, Employee name2);
     }
 }
