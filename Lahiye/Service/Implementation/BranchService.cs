@@ -30,7 +30,7 @@ namespace Lahiye.Service.Implementation
         {
             try
             {
-                Branch branch = _Bank.Datas.Find(g => g.Name.Contains(entity.ToLower().Trim())||);
+                Branch branch = _Bank.Datas.Find(g => g.Name.Contains(entity.ToLower().Trim()));
             }
             catch (FormatException)
             {

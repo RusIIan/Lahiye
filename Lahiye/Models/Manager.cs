@@ -7,8 +7,12 @@ namespace Lahiye.Models
     public  class Manager:BaseEntity
     {
         public string Surname { get; set; }
-
-        public string username = "Ruslan";
-        public int userpassword = 2482;
+        public string Username { get; set; }
+        public int Userpassword { get; set; }
+        public Manager()
+        {
+            Username = "Ruslan";
+            Userpassword = 2482;
+        }
     }
 }

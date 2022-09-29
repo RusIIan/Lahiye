@@ -13,13 +13,16 @@ namespace Lahiye
             EmployeeService employeeService = new EmployeeService();
             Console.ForegroundColor = ConsoleColor.DarkBlue;
             Console.WriteLine("                                              Welcome the Pasha Bank");
-
+                            //Models 
+            Branch branch = new Branch();
+            Employee employee = new Employee();
             Manager manager = new Manager();
+            //Login manager 
             Console.Write("Login: ");
             string userlogin = Console.ReadLine();
             Console.Write("Password: ");
             int userkod = int.Parse(Console.ReadLine());
-            if (manager.username == userlogin && manager.userpassword == userkod)
+            if (manager.Username == userlogin && manager.Userpassword == userkod)
             {
                 ManagerMenu();
                 int command = int.Parse(Console.ReadLine());
@@ -31,20 +34,17 @@ namespace Lahiye
                         switch (bracnhmenu)
                         {
                             case 1:
-                                employeeService.Create(entity);
+                                //employeeService.Create();
                                 break;
                             default:
                                 break;
                         }
                         break;
                     case 2:
-                        Console.WriteLine();
+                        EmployeeMenu();
                         break;
-                    case 3:
-                        Console.WriteLine();
-                        break;
-                    case 4:
-                        Console.WriteLine();
+                    default:
+                        Console.WriteLine("No such feature");
                         break;
                 }
             }
@@ -74,6 +74,14 @@ namespace Lahiye
             Console.WriteLine("3: UpDate Branch");
             Console.WriteLine("4: Get Branch");
             Console.WriteLine("4: GetAll Branch");
+        }
+        public static void EmployeeMenu()
+        {
+            Console.WriteLine("1: Create Employee");
+            Console.WriteLine("2: Delete Employee");
+            Console.WriteLine("3: UpDate Employee");
+            Console.WriteLine("4: Get Employee");
+            Console.WriteLine("4: GetAll Employee");
         }
     }
 }
