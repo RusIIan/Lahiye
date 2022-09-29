@@ -63,6 +63,7 @@ namespace Lahiye
                                 goto Menu;
                                 break;
                             default:
+                                Console.WriteLine("No such feature");
                                 break;
                         }
                         break;
@@ -83,15 +84,8 @@ namespace Lahiye
 
                                 goto Menu;
                                 break;
-                            case 4:
-
-                                goto Menu;
-                                break;
-                            case 5:
-
-                                goto Menu;
-                                break;
                             default:
+                                Console.WriteLine("No such feature");
                                 break;
                         }
 
@@ -124,7 +118,6 @@ namespace Lahiye
         {
             Console.WriteLine("1: Create Branch");
             Console.WriteLine("2: Delete Branch");
-            Console.WriteLine("3: Get Branch");
             Console.WriteLine("4: Transfer Money Branch");
             Console.WriteLine("5: Transfer Employee Branch");
         }
@@ -133,8 +126,6 @@ namespace Lahiye
             Console.WriteLine("1: Create Employee");
             Console.WriteLine("2: Delete Employee");
             Console.WriteLine("3: UpDate Employee");
-            Console.WriteLine("4: Get Employee");
-            Console.WriteLine("5: GetAll Employee");
         }
     }
 }

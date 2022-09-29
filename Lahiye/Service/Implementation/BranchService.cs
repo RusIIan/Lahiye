@@ -16,6 +16,7 @@ namespace Lahiye.Service.Implementation
         {
             _Bank = new Bank_G<Branch>();
         }
+        //We create List Employee
         public void Create(Branch branch)
         {
             _Bank.Datas.Add(branch);
@@ -70,7 +71,7 @@ namespace Lahiye.Service.Implementation
         {
             throw new NotImplementedException();
         }
-
+        //we are transferring employees to branches here
         public void TransferEmployee(string name, string name1, Employee name2)
         {
             Employee employee = new Employee();
@@ -78,10 +79,8 @@ namespace Lahiye.Service.Implementation
             Branch branch1 = new Branch();
             branch = _Bank.Datas.Find(x =>x.Name ==employee.Name);
             branch1 = _Bank.Datas.Find(x => x.Name == employee.Name);
-
-
         }
-
+        //we are transferring money to the employee
         public void TransferMoney()
         {
             Console.Clear();
@@ -97,10 +96,9 @@ namespace Lahiye.Service.Implementation
             {
                 if (employee.Name==name)
                 {
-                    employee.Salary -= Transfer.Budget;
+                    Transfer.Budget -=employee.Salary;
                 }
             }
-
             foreach (Branch Transfer in Branch.AllBranch)
             {
                 if (Transfer.Name==employee.Name)
@@ -109,7 +107,7 @@ namespace Lahiye.Service.Implementation
                 }
             }
         }
-
+        //we are changing the current names, budget, address
         public void Update(string name,decimal budget,string address)
         {
             Branch branch = _Bank.Datas.Find(u=>u.Name.ToLower().Trim()==name.Trim().ToLower());
