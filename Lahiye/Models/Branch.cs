@@ -10,7 +10,7 @@ namespace Lahiye.Models
         public decimal Budget { get; set; }
         public string Address { get; set; }
         public List<Employee> Employees { get; set;  }
-        public Branch(string name,decimal budget,string address)
+        public Branch(string name,decimal budget,string address,List<Employee> employees)
         {
             this.Name = name;
             this.Budget = budget;

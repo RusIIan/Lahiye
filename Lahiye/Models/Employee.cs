@@ -12,7 +12,6 @@ namespace Lahiye.Models
          public decimal Salary { get; set; }
          public string Professin { get; set; }
          public Branch branch { get; set; }
-        public decimal Budget { get; internal set; }
 
         public Employee(string name, string surname, decimal salary,string professin)
         {
