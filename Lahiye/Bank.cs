@@ -24,7 +24,8 @@ namespace Lahiye
             Manager manager = new Manager();
 
 
-                            //Login manager and Menu 
+            //Login manager and Menu 
+            
             Console.Write("Login: ");
             string userlogin = Console.ReadLine();
             Console.Write("Password: ");
@@ -33,6 +34,7 @@ namespace Lahiye
             {
                 Console.Clear();
                 ManagerMenu();
+                
                 int command = int.Parse(Console.ReadLine());
                 switch (command)
                 {
@@ -47,6 +49,7 @@ namespace Lahiye
                                 goto Menu;
                                 break;
                             case 2:
+                                
                                 // branchService.Delete(name);
                                 goto Menu;
                                 break;
@@ -56,11 +59,25 @@ namespace Lahiye
                                 break;
                             case 4:
                                 branchService.TransferMoney();
+                                Console.WriteLine("******************************************************************************");
+                                foreach (Branch item in Branch.AllBranch)
+                                {
+                                    Console.WriteLine($"Name: {branch.Name} Budget: {branch.Budget}  Address: {branch.Address}");
+                                }
+                                Console.WriteLine("******************************************************************************");
                                 goto Menu;
                                 break;
                             case 5:
 
                                 goto Menu;
+                                break;
+                            case 6:
+                                Console.WriteLine("******************************************************************************");
+                                foreach (Branch item in Branch.AllBranch)
+                                {
+                                    Console.WriteLine($"Name: {branch.Name} Budget: {branch.Budget}  Address: {branch.Address}");
+                                }
+                                Console.WriteLine("******************************************************************************");
                                 break;
                             default:
                                 Console.WriteLine("No such feature");
@@ -101,7 +118,8 @@ namespace Lahiye
             }
 
             Console.ResetColor();
-        }
+            }
+        
         public static void Data()
         {
             string name = Console.ReadLine();
@@ -120,6 +138,7 @@ namespace Lahiye
             Console.WriteLine("2: Delete Branch");
             Console.WriteLine("4: Transfer Money Branch");
             Console.WriteLine("5: Transfer Employee Branch");
+            Console.WriteLine("6: Created Branches");
         }
         public static void EmployeeMenu()
         {

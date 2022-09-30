@@ -22,22 +22,30 @@ namespace Lahiye.Service.Implementation
             Employee employee = new Employee();
             _employees.Datas.Add(employee);
             Console.Clear();
-            Console.WriteLine("--- Create Branch ---");
-            Console.Write("Please enter the Name: ");
-            string name = Console.ReadLine();
-            Console.Write("Please enter the Surname: ");
-            string surname = Console.ReadLine();
-            Console.Write("Please enter the Salary: ");
-            decimal salary = decimal.Parse(Console.ReadLine());
-            Console.Write("Please enter the Profession: ");
-            string profession = Console.ReadLine();
-            employee.Name = name;
-            employee.Surname = surname;
-            employee.Salary = salary;
-            employee.Professin = profession;
-            Console.WriteLine("You sing");
-            Console.ReadKey();
-            Console.Clear();
+            Console.WriteLine("--- Create Employee ---");
+            try
+            {
+                Console.Write("Please enter the Name: ");
+                string name = Console.ReadLine();
+                Console.Write("Please enter the Surname: ");
+                string surname = Console.ReadLine();
+                Console.Write("Please enter the Salary: ");
+                decimal salary = decimal.Parse(Console.ReadLine());
+                Console.Write("Please enter the Profession: ");
+                string profession = Console.ReadLine();
+                employee.Name = name;
+                employee.Surname = surname;
+                employee.Salary = salary;
+                employee.Professin = profession;
+                Console.WriteLine("You sing");
+                Console.ReadKey();
+                Console.Clear();
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("incorrectly create a worker");                
+            }
+        
         }
         public void Delete(string name)
         {
