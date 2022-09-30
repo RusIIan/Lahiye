@@ -34,7 +34,6 @@ namespace Lahiye
             {
                 Console.Clear();
                 ManagerMenu();
-                
                 int command = int.Parse(Console.ReadLine());
                 switch (command)
                 {
@@ -58,13 +57,14 @@ namespace Lahiye
                                 goto Menu;
                                 break;
                             case 4:
-                                branchService.TransferMoney();
                                 Console.WriteLine("******************************************************************************");
                                 foreach (Branch item in Branch.AllBranch)
                                 {
                                     Console.WriteLine($"Name: {branch.Name} Budget: {branch.Budget}  Address: {branch.Address}");
                                 }
                                 Console.WriteLine("******************************************************************************");
+                                branchService.TransferMoney();
+                                Console.ReadKey();
                                 goto Menu;
                                 break;
                             case 5:
@@ -91,6 +91,7 @@ namespace Lahiye
                         {
                             case 1:
                                 employeeService.Create(employee);
+                                
                                 goto Menu;
                                 break;
                             case 2:
@@ -98,7 +99,14 @@ namespace Lahiye
                                 goto Menu;
                                 break;
                             case 3:
-
+                              
+                                goto Menu;
+                                break;
+                            case 4:
+                                foreach (Employee item in )
+                                {
+                                    Console.WriteLine($"Name: {employee.Name} Salary: {employee.Salary}  Surname: {employee.Surname}  Profession: {employee.Professin}");
+                                }
                                 goto Menu;
                                 break;
                             default:
@@ -111,21 +119,12 @@ namespace Lahiye
                         Console.WriteLine("No such feature");
                         break;
                 }
-            }
+           }
             else
             {
                 Console.WriteLine("Involid password ");
             }
-
-            Console.ResetColor();
-            }
-        
-        public static void Data()
-        {
-            string name = Console.ReadLine();
-            string surname = Console.ReadLine();
-            decimal salary = decimal.Parse(Console.ReadLine());
-            string Profession = Console.ReadLine();
+                Console.ResetColor();
         }
         public static void ManagerMenu()
         {
@@ -145,6 +144,8 @@ namespace Lahiye
             Console.WriteLine("1: Create Employee");
             Console.WriteLine("2: Delete Employee");
             Console.WriteLine("3: UpDate Employee");
+            Console.WriteLine("4: Created Employee");
+
         }
     }
 }
