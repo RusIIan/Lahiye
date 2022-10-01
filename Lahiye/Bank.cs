@@ -25,7 +25,7 @@ namespace Lahiye
 
 
             //Login manager and Menu 
-            
+           
             Console.Write("Login: ");
             string userlogin = Console.ReadLine();
             Console.Write("Password: ");
@@ -45,79 +45,84 @@ namespace Lahiye
                         {
                             case 1:
                                 branchService.Create(branch);
+                                Console.ReadKey();
                                 goto Menu;
-                                break;
+                                    break;
                             case 2:
                                 
                                 // branchService.Delete(name);
                                 goto Menu;
                                 break;
                             case 3:
-
+                                Console.ReadKey();
+                                branchService.TransferEmployee(branch);
+                                Console.ReadKey();
                                 goto Menu;
-                                break;
+                                    break;
                             case 4:
-                                Console.WriteLine("******************************************************************************");
-                                foreach (Branch item in Branch.AllBranch)
-                                {
-                                    Console.WriteLine($"Name: {branch.Name} Budget: {branch.Budget}  Address: {branch.Address}");
-                                }
-                                Console.WriteLine("******************************************************************************");
                                 branchService.TransferMoney();
                                 Console.ReadKey();
                                 goto Menu;
                                 break;
                             case 5:
-
+                                    branchService.TransferEmployee(branch);
                                 goto Menu;
                                 break;
                             case 6:
-                                Console.WriteLine("******************************************************************************");
-                                foreach (Branch item in Branch.AllBranch)
-                                {
-                                    Console.WriteLine($"Name: {branch.Name} Budget: {branch.Budget}  Address: {branch.Address}");
-                                }
-                                Console.WriteLine("******************************************************************************");
-                                break;
-                            default:
+                                    branchService.GetProfit(branch);
+                                    Console.WriteLine("******************************************************************************");
+                                    foreach (Branch branch1 in branchService._Bank.Datas)
+                                    {
+                                        Console.WriteLine($"Name: {branch.Name} Budget: {branch.Budget}  Address: {branch.Address}");
+                                    }
+                                    Console.WriteLine("******************************************************************************");
+                                    Console.ReadKey();
+                                    goto Menu;
+                                    break;
+                                default:
                                 Console.WriteLine("No such feature");
                                 break;
                         }
                         break;
-                    case 2:
-                        EmployeeMenu();
-                        int employemenu = int.Parse(Console.ReadLine());
-                        switch (employemenu)
-                        {
-                            case 1:
-                                employeeService.Create(employee);
-                                
-                                goto Menu;
-                                break;
-                            case 2:
+                                case 2:
+                                    EmployeeMenu();
+                                    int employemenu = int.Parse(Console.ReadLine());
+                                    switch (employemenu)
+                                    {
+                                        case 1:
+                                            employeeService.Create(employee);
+                                            Console.ReadKey();
+                                            goto Menu;
+                                                break;
+                                        case 2:
+                                            employeeService.Delete();
+                                            Console.ReadKey();
+                                            goto Menu;
+                                            break;
+                                        case 3:
+                                            employeeService.Update();
+                                            Console.ReadKey();
+                                            goto Menu;
+                                            break;
+                                        case 4:
+                                            Console.WriteLine("******************************************************************************");
+                                            foreach (Employee employee1 in employeeService._employees.Datas)
+                                            {
+                                                Console.WriteLine($"Name: {employee.Name} Surname: {employee.Surname}  Salary: {employee.Salary} Profession: {employee.Profession}");
+                                            }
+                                            Console.WriteLine("******************************************************************************");
+                                            Console.ReadKey();
+                                            goto Menu;
+                                            break;
+                                        default:
+                                            Console.WriteLine("No such feature");
+                                            break;
+                                    }
 
-                                goto Menu;
-                                break;
-                            case 3:
-                              
-                                goto Menu;
-                                break;
-                            case 4:
-                                foreach (Employee item in )
-                                {
-                                    Console.WriteLine($"Name: {employee.Name} Salary: {employee.Salary}  Surname: {employee.Surname}  Profession: {employee.Professin}");
-                                }
-                                goto Menu;
-                                break;
-                            default:
-                                Console.WriteLine("No such feature");
-                                break;
-                        }
-
-                        break;
-                    default:
-                        Console.WriteLine("No such feature");
-                        break;
+                                    break;
+                                default:
+                                    Console.WriteLine("No such feature");
+                                    break;
                 }
            }
             else
@@ -135,9 +140,10 @@ namespace Lahiye
         {
             Console.WriteLine("1: Create Branch");
             Console.WriteLine("2: Delete Branch");
-            Console.WriteLine("4: Transfer Money Branch");
-            Console.WriteLine("5: Transfer Employee Branch");
-            Console.WriteLine("6: Created Branches");
+            Console.WriteLine("3: Transfer Money Branch");
+            Console.WriteLine("4: Transfer Employee Branch");
+            Console.WriteLine("5: Created Branches");
+            Console.WriteLine("6: Getprofit Branches");
         }
         public static void EmployeeMenu()
         {
@@ -145,7 +151,6 @@ namespace Lahiye
             Console.WriteLine("2: Delete Employee");
             Console.WriteLine("3: UpDate Employee");
             Console.WriteLine("4: Created Employee");
-
         }
     }
 }

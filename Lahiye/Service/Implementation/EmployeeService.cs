@@ -10,7 +10,7 @@ namespace Lahiye.Service.Implementation
 {
     public class EmployeeService:IBankService<Employee>,IEmployeeService
     {
-        private Bank_G<Employee> _employees;
+        public Bank_G<Employee> _employees;
 
         public EmployeeService()
         {
@@ -36,7 +36,7 @@ namespace Lahiye.Service.Implementation
                 employee.Name = name;
                 employee.Surname = surname;
                 employee.Salary = salary;
-                employee.Professin = profession;
+                employee.Profession = profession;
                 Console.WriteLine("You sing");
                 Console.ReadKey();
                 Console.Clear();
@@ -56,8 +56,8 @@ namespace Lahiye.Service.Implementation
         public void Get(string entity)
         {
             Employee employee = _employees.Datas.Find(x => x.Name.Contains(entity.ToLower().Trim())
-             || x.Surname.Contains(entity.ToLower().Trim()) || x.Professin.Contains(entity.ToLower().Trim()));
-            Console.WriteLine(employee.Name + " " + employee.Surname+ " " +employee.Professin);
+             || x.Surname.Contains(entity.ToLower().Trim()) || x.Profession.Contains(entity.ToLower().Trim()));
+            Console.WriteLine(employee.Name + " " + employee.Surname+ " " +employee.Profession);
         }
         public void GetAll()
         {
@@ -71,7 +71,9 @@ namespace Lahiye.Service.Implementation
         {
             Employee employee = _employees.Datas.Find(u=>u.Name.ToLower().Trim()==name.ToLower().Trim());
             employee.Salary = salary;
-            employee.Professin = profession;
+            employee.Profession = profession;
         }
+
+        
     }
 }
