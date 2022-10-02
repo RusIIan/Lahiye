@@ -17,12 +17,12 @@ namespace Lahiye.Service.Implementation
             _Bank = new Bank_G<Branch>();
         }
         //We create List Employee
-        public void Create(Branch branch)
+        public void Create(Branch entity )
         {
+            Branch branch = new Branch();
+                _Bank.Datas.Add(branch);
             try
             {
-                _Bank.Datas.Add(branch);
-                Console.Clear();
                 Console.WriteLine("--- Create Branch ---");
                 Console.Write("Please enter the Name: ");
                 string name = Console.ReadLine();
@@ -33,8 +33,6 @@ namespace Lahiye.Service.Implementation
                 branch.Name = name;
                 branch.Budget = budger;
                 branch.Address = address;
-                _Bank.Datas.Add(branch);
-                Console.Clear();
             }
             catch (Exception)
             {
@@ -43,17 +41,20 @@ namespace Lahiye.Service.Implementation
             
             
         }
-        public void Delete(string name)
+        public void Delete(Branch branch1)
         {
-            Branch branch = _Bank.Datas.Find(d => d.Name.ToLower().Trim() == name.ToLower().Trim());
+            Branch branch = _Bank.Datas.Find(d => d.Name.ToLower().Trim() == branch1.Name.ToLower().Trim());
             branch.SoftDelete = false;
         }
 
-        public void Get(string entity)
+        public void Get()
         {
             try
             {
-                Branch branch = _Bank.Datas.Find(g => g.Name.Contains(entity.ToLower().Trim()));
+                Console.Write("Name: ");
+                string entity = Console.ReadLine();
+                Branch branch = _Bank.Datas.Find(g => g.Name.Contains(entity.Trim())
+                ||g.Budget.ToString().Contains(entity.Trim())||g.Address.Contains(entity.Trim()));
             }
             catch (FormatException)
             {
@@ -74,7 +75,6 @@ namespace Lahiye.Service.Implementation
         public void GetProfit(Branch branch)
         {
             Console.Write("Calculate profit and loss:\n");
-
             Console.Write("Input Cost Price: ");
             Console.Write("Input Selling Price: ");
             decimal sellprice = 0;
@@ -83,7 +83,7 @@ namespace Lahiye.Service.Implementation
             Console.WriteLine($"Profit of the {branch.Name}  branch in {getprofil}");
 
         }
-        public void HireEmployee(Branch branch,EmployeeService employeeService)
+        public void HireEmployee(Branch branch)
         {
             Employee employee = new Employee();
             if (branch.Budget>employee.Salary)
@@ -108,7 +108,6 @@ namespace Lahiye.Service.Implementation
         //we are transferring money to the employee
         public void TransferMoney()
         {
-            Console.Clear();
             Console.WriteLine("---Trasfer Money---");
             Console.Write("Please enter your Name: ");
             string yourname = Console.ReadLine();
@@ -116,19 +115,21 @@ namespace Lahiye.Service.Implementation
             string name = Console.ReadLine();
             Console.Write("Enter the amount of funds you would like to transfer: ");
             string amount = Console.ReadLine();
-            Employee employee = new Employee();
+            Branch branch = new Branch();
             foreach (Branch Transfer in _Bank.Datas)
             {
-                if (employee.Name==name)
+                if (Transfer.Name==name)
                 {
-                    Transfer.Budget -=employee.Salary;
+                    Transfer.Budget -= branch.Budget ;
+                    break;
                 }
             }
             foreach (Branch Transfer in _Bank.Datas)
             {
-                if (Transfer.Name==employee.Name)
+                if (Transfer.Name==name)
                 {
-                    employee.Salary+=Transfer.Budget;
+                    branch.Budget += Transfer.Budget;
+                    break;
                 }
             }
         }
@@ -138,11 +139,15 @@ namespace Lahiye.Service.Implementation
 
 
         //we are changing the current names, budget, address
-        public void Update(string name,decimal budget,string address)
+        public void Update()
         {
+            Console.Write("Name: ");
+            string name = Console.ReadLine();
             Branch branch = _Bank.Datas.Find(u=>u.Name.ToLower().Trim()==name.Trim().ToLower());
-            branch.Budget = budget;
-            branch.Address = address;
+            Console.Write("New budget: ");
+            branch.Budget = decimal.Parse(Console.ReadLine());
+            Console.Write("New Address: ");
+            branch.Address = Console.ReadLine();
         }
     }
 }

@@ -8,9 +8,9 @@ namespace Lahiye.Service.Interface
     public  interface IBankService<T> where T: BaseEntity
     { 
         void Create(T entity);
-        void Delete(string name);
-        void Update(string text,decimal money, string info);
-        void Get(string entity);
+        void Delete(T branch);
+        void Update();
+        void Get();
         void GetAll();
     }
 }
