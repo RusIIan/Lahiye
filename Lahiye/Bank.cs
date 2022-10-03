@@ -44,6 +44,7 @@ namespace Lahiye
                                 int bracnhmenu = int.Parse(Console.ReadLine());
                                 switch (bracnhmenu)
                                 {
+                                    #region
                                     case 1:
                                         Console.Clear();
                                         branchService.Create(branch);
@@ -65,6 +66,7 @@ namespace Lahiye
                                         Console.Clear();
                                         goto Menu;
                                         break;
+                                    #endregion
                                     case 4:
                                         Console.Clear();
                                         branchService.TransferEmployee(branch);
@@ -74,7 +76,7 @@ namespace Lahiye
                                         break;
                                     case 5:
                                         Console.Clear();
-                                        branchService.HireEmployee(branch);
+                                        branchService.HireEmployee("Ruslan",1500);
                                         Console.ReadKey();
                                         Console.Clear();
                                         goto Menu;
@@ -85,6 +87,7 @@ namespace Lahiye
                                         Console.ReadKey();
                                         Console.Clear();
                                         goto Menu;
+                                    #region
                                     case 7:
                                         Console.Clear();
                                         branchService.Get();
@@ -104,6 +107,7 @@ namespace Lahiye
                                         Console.Clear();
                                         goto Menu;
                                         break;
+                                    #endregion
                                     default:
                                         Console.WriteLine("No such feature");
                                         break;

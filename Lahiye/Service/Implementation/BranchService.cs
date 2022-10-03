@@ -10,6 +10,7 @@ namespace Lahiye.Service.Implementation
 {
     public class BranchService : IBankService<Branch>, IBranchService
     {
+       
         public Bank_G<Branch> _Bank;
 
         public BranchService()
@@ -87,18 +88,22 @@ namespace Lahiye.Service.Implementation
         }
         public void HireEmployee(Branch branch)
         {
-            Employee employee = new Employee();
-            if (branch.Budget>employee.Salary)
+            foreach (Branch branch1 in _Bank.Datas)
             {
-                branch.Employees.Add(employee);
-                branch.Budget -= employee.Salary;
-                Console.WriteLine($"Employee {employee.Name} surname {employee.Surname} was successfully hired. ");
+                if (branch.Budget > employee.Salary)
+                {
+                    branch.Employees.Add(employee);
+                    branch.Budget -= employee.Salary;
+                    Console.WriteLine($"Employee {employee.Name} surname {employee.Surname} was successfully hired. ");
+                }
             }
+           
         }
         //we are transferring employees to branches here
         public void TransferEmployee(Branch branch)
         {
             Employee employee = new Employee();
+            
             if (branch.Budget > employee.Salary)
             {
                 branch.Employees.Remove(employee);
