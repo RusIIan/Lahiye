@@ -45,25 +45,35 @@ namespace Lahiye.Service.Implementation
             }
         
         }
-        public void Delete(Employee employee1)
+        public void Delete()
         {
-            Employee employee = _employees.Datas.Find(x => x.Name.ToLower().Trim() == employee1.Name.ToLower().Trim());
-            employee1.SoftDelete = true;
-            GetAll();
+            Console.WriteLine("Name: ");
+            string name = Console.ReadLine();
+            Employee employee = _employees.Datas.Find(x => x.Name.ToLower().Trim() == name.ToLower().Trim());
+            employee.SoftDelete = true;
+        
         }
         public void Get()
         {
-            Console.Write("Name: ");
-            string entity = Console.ReadLine();
-            Employee employee = _employees.Datas.Find(x => x.Name.Contains(entity.ToLower().Trim())
-             || x.Surname.Contains(entity.ToLower().Trim()) || x.Profession.Contains(entity.ToLower().Trim()));
-            Console.WriteLine(employee.Name + " " + employee.Surname+ " " +employee.Profession);
+            try
+            {
+                Console.Write("Name: ");
+                string entity = Console.ReadLine();
+                Employee employee = _employees.Datas.Find(x => x.Name.Contains(entity.Trim())
+                 || x.Surname.Contains(entity.Trim()) || x.Profession.Contains(entity.Trim()));
+                Console.WriteLine($"Name: {employee.Name}  Surname: {employee.Surname}  Profession: {employee.Profession}  Salary:{employee.Salary}");
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Employee not found");
+            }
+            
         }
         public void GetAll()
         {
             foreach (Employee employee in _employees.Datas.Where(d=>d.SoftDelete==false))
             {
-                Console.WriteLine(employee.Name+ " " + employee.Surname+" "+employee.Profession);
+                Console.WriteLine(employee.Name+ " " + employee.Surname+" "+employee.Profession+" "+ employee.Salary);
             }
         }
 

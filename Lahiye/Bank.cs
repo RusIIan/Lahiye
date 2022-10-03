@@ -12,7 +12,7 @@ namespace Lahiye
         {
             EmployeeService employeeService = new EmployeeService();
             BranchService branchService = new BranchService();
-            Console.ForegroundColor = ConsoleColor.DarkBlue;
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("                                              Welcome the Pasha Bank");
                             //Models 
             Branch branch = new Branch();
@@ -49,7 +49,7 @@ namespace Lahiye
                                         goto Menu;
                                         break;
                                     case 2:
-                                        branchService.Delete(branch);
+                                        branchService.Delete();
                                         Console.ReadKey();
                                         goto Menu;
                                         break;
@@ -97,6 +97,7 @@ namespace Lahiye
                                 switch (employemenu)
                                 {
                                     case 1:
+                                        Console.Clear();
                                         employeeService.Create(employee);
                                         Console.WriteLine("******************************************************************************");
                                         foreach (Employee employee1 in employeeService._employees.Datas)
@@ -108,7 +109,7 @@ namespace Lahiye
                                         goto Menu;
                                         break;
                                     case 2:
-                                        employeeService.Delete(employee);
+                                        employeeService.Delete();
                                         Console.ReadKey();
                                         goto Menu;
                                         break;
@@ -117,21 +118,23 @@ namespace Lahiye
                                         goto Menu;
                                         break;
                                     case 4:
+                                        employeeService.Get();
+                                        Console.ReadKey();
+                                        goto Menu;
+                                        break;
+                                    case 5:
+                                        employeeService.GetAll();
+                                        goto Menu;
+                                        break;
+                                    case 6:
                                         Console.WriteLine("******************************************************************************");
                                         foreach (Employee employee1 in employeeService._employees.Datas)
                                         {
                                             Console.WriteLine($"Name: {employee1.Name} Surname: {employee1.Surname}  Salary: {employee1.Salary} Profession: {employee1.Profession}");
                                         }
                                         Console.WriteLine("******************************************************************************");
-                                        Console.ReadKey();
                                         goto Menu;
                                         break;
-                                    case 5:
-                                        employeeService.Get();
-                                        goto Menu;
-                                    case 6:
-                                        employeeService.GetAll();
-                                        goto Menu;
                                     default:
                                         Console.WriteLine("No such feature");
                                         break;
@@ -140,6 +143,7 @@ namespace Lahiye
                             default:
                                 Console.WriteLine("No such feature");
                                 break;
+                                        Console.Clear();
                         }
                     }
                     else
@@ -156,11 +160,15 @@ namespace Lahiye
         }
         public static void ManagerMenu()
         {
+            Console.WriteLine("                                                         Pasha Bank");
+            Console.WriteLine("           Manager Menu");
             Console.WriteLine("1: Branch");
             Console.WriteLine("2: Employee");
         }
         public static void BranchMenu()
         {
+            Console.WriteLine("                                                         Pasha Bank");
+            Console.WriteLine("                Branch Menu");
             Console.WriteLine("1: Create Branch");
             Console.WriteLine("2: Delete Branch");
             Console.WriteLine("3: Transfer Money Branch");
@@ -173,11 +181,14 @@ namespace Lahiye
         }
         public static void EmployeeMenu()
         {
+            Console.WriteLine("                                                         Pasha Bank");
+            Console.WriteLine("               Employee Menu");
             Console.WriteLine("1: Create Employee");
             Console.WriteLine("2: Delete Employee");
             Console.WriteLine("3: UpDate Employee");
-            Console.WriteLine("4: Created Employee");
+            Console.WriteLine("4: Get Employee");
             Console.WriteLine("5: GetAll Employee");
+            Console.WriteLine("6: Created Employee");
         }
     }
 }

@@ -41,9 +41,10 @@ namespace Lahiye.Service.Implementation
             
             
         }
-        public void Delete(Branch branch1)
+        public void Delete()
         {
-            Branch branch = _Bank.Datas.Find(d => d.Name.ToLower().Trim() == branch1.Name.ToLower().Trim());
+            string name = Console.ReadLine();
+            Branch branch = _Bank.Datas.Find(d => d.Name.ToLower().Trim() == name.ToLower().Trim());
             branch.SoftDelete = false;
         }
 
@@ -55,10 +56,10 @@ namespace Lahiye.Service.Implementation
                 string entity = Console.ReadLine();
                 Branch branch = _Bank.Datas.Find(g => g.Name.Contains(entity.Trim())
                 ||g.Budget.ToString().Contains(entity.Trim())||g.Address.Contains(entity.Trim()));
+                Console.WriteLine($"Name: {branch.Name}  Budget: {branch.Budget}  Address: {branch.Address}");
             }
             catch (FormatException)
             {
-
                 Console.WriteLine("Branch not found");
             }
         }
@@ -81,7 +82,6 @@ namespace Lahiye.Service.Implementation
             branch.Employees.ForEach(c=>sellprice+=c.Salary);
             decimal getprofil = branch.Budget - sellprice;
             Console.WriteLine($"Profit of the {branch.Name}  branch in {getprofil}");
-
         }
         public void HireEmployee(Branch branch)
         {
@@ -133,11 +133,6 @@ namespace Lahiye.Service.Implementation
                 }
             }
         }
-
-
-
-
-
         //we are changing the current names, budget, address
         public void Update()
         {
