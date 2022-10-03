@@ -76,7 +76,7 @@ namespace Lahiye
                                         break;
                                     case 5:
                                         Console.Clear();
-                                        branchService.HireEmployee("Ruslan",1500);
+                                        branchService.HireEmployee();
                                         Console.ReadKey();
                                         Console.Clear();
                                         goto Menu;

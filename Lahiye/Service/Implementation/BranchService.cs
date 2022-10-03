@@ -88,15 +88,15 @@ namespace Lahiye.Service.Implementation
         }
         public void HireEmployee(Branch branch)
         {
-            foreach (Branch branch1 in _Bank.Datas)
-            {
-                if (branch.Budget > employee.Salary)
-                {
-                    branch.Employees.Add(employee);
-                    branch.Budget -= employee.Salary;
-                    Console.WriteLine($"Employee {employee.Name} surname {employee.Surname} was successfully hired. ");
-                }
-            }
+            //foreach (Branch branch1 in _Bank.Datas)
+            //{
+            //    if (branch.Budget > employee.Salary)
+            //    {
+            //        branch.Employees.Add(employee);
+            //        branch.Budget -= employee.Salary;
+            //        Console.WriteLine($"Employee {employee.Name} surname {employee.Surname} was successfully hired. ");
+            //    }
+            //}
            
         }
         //we are transferring employees to branches here
