@@ -31,58 +31,77 @@ namespace Lahiye
                      Console.Clear();
                     if (manager.Username == userlogin && manager.Userpassword == userkod)
                     {
-                       Console.Clear();
+                        Console.Clear();
                     Menu: ManagerMenu();
                         int command = int.Parse(Console.ReadLine());
+                        Console.Clear();
 
                         switch (command)
                         {
                             case 1:
-                               Console.Clear();
+                                Console.Clear();
                                 BranchMenu();
                                 int bracnhmenu = int.Parse(Console.ReadLine());
                                 switch (bracnhmenu)
                                 {
                                     case 1:
+                                        Console.Clear();
                                         branchService.Create(branch);
                                         Console.ReadKey();
+                                        Console.Clear();
                                         goto Menu;
                                         break;
                                     case 2:
+                                        Console.Clear();
                                         branchService.Delete();
                                         Console.ReadKey();
+                                        Console.Clear();
                                         goto Menu;
                                         break;
                                     case 3:
+                                        Console.Clear();
                                         branchService.TransferMoney();
                                         Console.ReadKey();
+                                        Console.Clear();
                                         goto Menu;
                                         break;
                                     case 4:
+                                        Console.Clear();
                                         branchService.TransferEmployee(branch);
                                         Console.ReadKey();
+                                        Console.Clear();
                                         goto Menu;
                                         break;
                                     case 5:
+                                        Console.Clear();
                                         branchService.HireEmployee(branch);
                                         Console.ReadKey();
+                                        Console.Clear();
                                         goto Menu;
                                         break;
                                     case 6:
-                                        branchService.GetProfit(branch);
+                                        Console.Clear();
+                                        branchService.GetProfit();
                                         Console.ReadKey();
+                                        Console.Clear();
                                         goto Menu;
                                     case 7:
+                                        Console.Clear();
                                         branchService.Get();
                                         Console.ReadKey();
+                                        Console.Clear();
                                         goto Menu;
                                     case 8:
+                                        Console.Clear();
                                         branchService.GetAll();
                                         Console.ReadKey();
+                                        Console.Clear();
                                         goto Menu;
                                     case 9:
+                                        Console.Clear();
                                         branchService.Update();
                                         Console.ReadKey();
+                                        Console.Clear();
                                         goto Menu;
                                         break;
                                     default:
@@ -143,7 +162,6 @@ namespace Lahiye
                             default:
                                 Console.WriteLine("No such feature");
                                 break;
-                                        Console.Clear();
                         }
                     }
                     else

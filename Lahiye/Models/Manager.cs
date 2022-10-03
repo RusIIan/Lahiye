@@ -12,7 +12,7 @@ namespace Lahiye.Models
         public Manager()
         {
             Username = "Ruslan";
-            Userpassword = 2482;
+            Userpassword = 123;
         }
     }
 }

@@ -87,7 +87,5 @@ namespace Lahiye.Service.Implementation
             Console.Write("New Profession: ");
             employee.Profession = Console.ReadLine();
         }
-
-        
     }
 }
