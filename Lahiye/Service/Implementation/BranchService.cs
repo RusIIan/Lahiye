@@ -88,21 +88,24 @@ namespace Lahiye.Service.Implementation
         }
         public void HireEmployee(Branch branch)
         {
-            //foreach (Branch branch1 in _Bank.Datas)
-            //{
-            //    if (branch.Budget > employee.Salary)
-            //    {
-            //        branch.Employees.Add(employee);
-            //        branch.Budget -= employee.Salary;
-            //        Console.WriteLine($"Employee {employee.Name} surname {employee.Surname} was successfully hired. ");
-            //    }
-            //}
-           
+           /* EmployeeService employeeService = new EmployeeService();
+            employeeService.Create(employee);
+            Employee employee = new Employee();
+            foreach (Branch branch1 in _Bank.Datas)
+            {
+                if (branch1.Budget > employee.Salary)
+                {
+                    branch1.Employees.Add(employee);
+                    branch1.Budget -= employee.Salary;
+                    Console.WriteLine($"Employee {employee.Name} surname {employee.Surname} was successfully hired. ");
+                }
+            }*/
+
         }
-        //we are transferring employees to branches here
+        //we are transferring employees to branches here               ы
         public void TransferEmployee(Branch branch)
         {
-            Employee employee = new Employee();
+           /* Employee employee = new Employee();
             
             if (branch.Budget > employee.Salary)
             {
@@ -110,7 +113,7 @@ namespace Lahiye.Service.Implementation
                 branch.Employees.Add(employee);
                 branch.Budget -= employee.Salary;
                 Console.WriteLine($"Employee {employee.Name} {employee.Surname} successfully transtfer from {branch.Address}");
-            }
+            }*/
         }
         //we are transferring money to the employee
         public void TransferMoney()

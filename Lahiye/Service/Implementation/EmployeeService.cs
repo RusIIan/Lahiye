@@ -36,7 +36,6 @@ namespace Lahiye.Service.Implementation
                 employee.Surname = surname;
                 employee.Salary = salary;
                 employee.Profession = profession;
-                Console.WriteLine("You sing");
                 Console.Clear();
             }
             catch (FormatException)

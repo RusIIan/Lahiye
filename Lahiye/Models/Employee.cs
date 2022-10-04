@@ -10,5 +10,6 @@ namespace Lahiye.Models
          public decimal Salary { get; set; }
          public string Profession { get; set; }
          public Branch branch { get; set; }
+
     }
 }
