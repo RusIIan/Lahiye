@@ -8,9 +8,9 @@ namespace Lahiye.Service.Interface
 {
     public  interface IBranchService:IBankService<Branch>
     {
-        void HireEmployee(Branch branch);
-        void GetProfit();
-        void TransferMoney();
-        void TransferEmployee(Branch branch);
+        public void HireEmployee(Branch branch,EmployeeService service);
+        public void GetProfit();
+        public void TransferMoney();
+        public void TransferEmployee(Branch branch);
     }
 }

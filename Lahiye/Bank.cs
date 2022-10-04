@@ -77,7 +77,7 @@ namespace Lahiye
                                         break;
                                     case 5:
                                         Console.Clear();
-                                        branchService.HireEmployee(branch);
+                                        branchService.HireEmployee(branch,employeeService);
                                         Console.ReadKey();
                                         Console.Clear();
                                         goto Menu;
@@ -213,23 +213,19 @@ namespace Lahiye
             Console.WriteLine("5: GetAll Employee");
             Console.WriteLine("6: Created Employee");
         }
-        public static void SeedDataBase()
-        {
-            Employee employee = new Employee("Ruslan","Ibrahimov",1500,"Developer");
-            Employee employee1 = new Employee("Zahid","Qasimov",1000,"Xezinedar");
-            Employee employee2 = new Employee("Aqil","Qarayev",900,"Kassir");
-            Employee employee3 = new Employee("Gulu", "Nuriyeva", 1300, "Manacer");
+        //public static void SeedDataBase()
+        //{
+        //    Employee employee = new Employee("Ruslan","Ibrahimov",1500,"Developer");
+        //    Employee employee1 = new Employee("Zahid","Qasimov",1000,"Xezinedar");
+        //    Employee employee2 = new Employee("Aqil","Qarayev",900,"Kassir");
+        //    Employee employee3 = new Employee("Gulu", "Nuriyeva", 1300, "Manacer");
 
-            List<Employee> list = new List<Employee>();
-            List<Employee> employees = new List<Employee>() { employee, employee1, employee2, employee3 };
-            var name = Console.ReadLine();
+        //    List<Employee> employees = new List<Employee>() { employee, employee1, employee2, employee3 };
+        //    var name = Console.ReadLine();
 
-            Employee emp = employees.FirstOrDefault(x => x.Name == name);
+        //    Employee emp = employees.FirstOrDefault(x => x.Name == name);
 
-            employees.Remove(emp);
-            list.Add(emp);
-
-
-        }
+        //    employees.Remove(emp);
+        //}
     }
 }

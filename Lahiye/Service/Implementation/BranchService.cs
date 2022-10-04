@@ -10,7 +10,7 @@ namespace Lahiye.Service.Implementation
 {
     public class BranchService : IBankService<Branch>, IBranchService
     {
-       
+        public Bank_G<Employee> _Employe;
         public Bank_G<Branch> _Bank;
 
         public BranchService()
@@ -42,6 +42,7 @@ namespace Lahiye.Service.Implementation
             
             
         }
+        //silmek Filiali silir
         public void Delete()
         {
             Console.Write("Name: ");
@@ -49,7 +50,7 @@ namespace Lahiye.Service.Implementation
             Branch branch = _Bank.Datas.Find(d => d.Name.ToLower().Trim() == name.ToLower().Trim());
             branch.SoftDelete = true;
         }
-
+              //Filiali adla Tapir
         public void Get()
         {
             try
@@ -65,7 +66,7 @@ namespace Lahiye.Service.Implementation
                 Console.WriteLine("Branch not found");
             }
         }
-
+          //butun branchi teqdim edir
         public void GetAll()
         {
             foreach (Branch branch in _Bank.Datas.Where(d => d.SoftDelete == false))
@@ -78,42 +79,38 @@ namespace Lahiye.Service.Implementation
         public void GetProfit()
         {
             Branch branch = new Branch();
-            Console.Write("Calculate profit and loss:\n");
-            Console.Write("Input Cost Price: ");
+            Console.Write("Calculate profit and loss:");
             Console.Write("Input Selling Price: ");
+            decimal getprofil = 0;
             decimal sellprice = decimal.Parse(Console.ReadLine());
             branch.Employees.ForEach(c=>sellprice+=c.Salary);
-            decimal getprofil = branch.Budget - sellprice;
+            getprofil = branch.Budget - sellprice;
             Console.WriteLine($"Profit of the {branch.Name}  branch in {getprofil}");
+            
         }
-        public void HireEmployee(Branch branch)
+        public void HireEmployee(Branch branch, EmployeeService service)
         {
-           /* EmployeeService employeeService = new EmployeeService();
-            employeeService.Create(employee);
             Employee employee = new Employee();
-            foreach (Branch branch1 in _Bank.Datas)
+            
+            if (branch.Budget>employee.Salary)
             {
-                if (branch1.Budget > employee.Salary)
-                {
-                    branch1.Employees.Add(employee);
-                    branch1.Budget -= employee.Salary;
-                    Console.WriteLine($"Employee {employee.Name} surname {employee.Surname} was successfully hired. ");
-                }
-            }*/
-
+                branch.Employees.Add(employee);
+                branch.Budget -= employee.Salary;
+                Console.WriteLine($"Employee {employee.Salary}  {branch.Budget}");
+            }
         }
-        //we are transferring employees to branches here               ы
+        //we are transferring employees to branches here               
         public void TransferEmployee(Branch branch)
         {
-           /* Employee employee = new Employee();
-            
+            Employee employee = new Employee();
+
             if (branch.Budget > employee.Salary)
             {
                 branch.Employees.Remove(employee);
                 branch.Employees.Add(employee);
                 branch.Budget -= employee.Salary;
                 Console.WriteLine($"Employee {employee.Name} {employee.Surname} successfully transtfer from {branch.Address}");
-            }*/
+            }
         }
         //we are transferring money to the employee
         public void TransferMoney()
