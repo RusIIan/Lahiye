@@ -10,12 +10,13 @@ namespace Lahiye.Service.Implementation
 {
     public class BranchService : IBankService<Branch>, IBranchService
     {
-        public Bank_G<Employee> _Employe;
+        private EmployeeService employeeService;
         public Bank_G<Branch> _Bank;
 
-        public BranchService()
+        public BranchService(EmployeeService _employeeService)
         {
             _Bank = new Bank_G<Branch>();
+            employeeService = _employeeService;
         }
         //We create List Employee
         public void Create(Branch entity )
@@ -34,6 +35,7 @@ namespace Lahiye.Service.Implementation
                 branch.Name = name;
                 branch.Budget = budger;
                 branch.Address = address;
+                branch.Employees = new List<Employee>();
             }
             catch (Exception)
             {
@@ -67,13 +69,13 @@ namespace Lahiye.Service.Implementation
             }
         }
           //butun branchi teqdim edir
-        public void GetAll()
+        public void GetAllToConsole()
         {
             foreach (Branch branch in _Bank.Datas.Where(d => d.SoftDelete == false))
             {
-                Console.WriteLine($"Name: {branch.Name}  Budget: {branch.Budget}  Address: {branch.Address}");
+                Console.WriteLine(branch.Name + " " + branch.Budget + " " + branch.Address);
             }
-        }
+        }             
 
 
         public void GetProfit()
@@ -88,21 +90,20 @@ namespace Lahiye.Service.Implementation
             Console.WriteLine($"Profit of the {branch.Name}  branch in {getprofil}");
             
         }
-        public void HireEmployee(Branch branch, EmployeeService service)
+        public void HireEmployee(string branchName,string employeeName)
         {
-            Employee employee = new Employee();
-            
-            if (branch.Budget>employee.Salary)
+            Branch branch = _Bank.Datas.Where(m => m.Name == branchName).FirstOrDefault();
+            Employee employee = employeeService._employees.Datas.Where(e => e.Name == employeeName).FirstOrDefault();
+            branch.Employees.Add(employee);
+            foreach (var item in branch.Employees)
             {
-                branch.Employees.Add(employee);
-                branch.Budget -= employee.Salary;
-                Console.WriteLine($"Employee {employee.Salary}  {branch.Budget}");
+                Console.WriteLine(item.Name);
             }
         }
         //we are transferring employees to branches here               
         public void TransferEmployee(Branch branch)
         {
-            Employee employee = new Employee();
+            /*Employee employee = new Employee();
 
             if (branch.Budget > employee.Salary)
             {
@@ -110,7 +111,7 @@ namespace Lahiye.Service.Implementation
                 branch.Employees.Add(employee);
                 branch.Budget -= employee.Salary;
                 Console.WriteLine($"Employee {employee.Name} {employee.Surname} successfully transtfer from {branch.Address}");
-            }
+            }*/
         }
         //we are transferring money to the employee
         public void TransferMoney()
@@ -150,5 +151,10 @@ namespace Lahiye.Service.Implementation
             Console.Write("New Address: ");
             branch.Address = Console.ReadLine();
         }
+
+       /* public List<Branch> GetAll()
+        {
+            
+        }*/
     }
 }

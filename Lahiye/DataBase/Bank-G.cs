@@ -7,7 +7,7 @@ namespace Lahiye.DataBase
 {
     public class Bank_G<T>
     {
-        public List<T> Datas = new List<T>();
+        public List<T> Datas;
         public Bank_G()
         {
             Datas = new List<T>();

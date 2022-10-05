@@ -6,11 +6,12 @@ using System.Text;
 
 namespace Lahiye.Service.Interface
 {
-    public  interface IBranchService:IBankService<Branch>
+    public interface IBranchService : IBankService<Branch>
     {
-        public void HireEmployee(Branch branch,EmployeeService service);
+        public void HireEmployee(string brName, string empName);
         public void GetProfit();
         public void TransferMoney();
         public void TransferEmployee(Branch branch);
-    }
+    
+}
 }

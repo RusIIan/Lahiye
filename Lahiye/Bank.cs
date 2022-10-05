@@ -12,12 +12,12 @@ namespace Lahiye
         static void Main(string[] args)
         {
             EmployeeService employeeService = new EmployeeService();
-            BranchService branchService = new BranchService();
+            BranchService branchService = new BranchService(employeeService);
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("                                              Welcome the Pasha Bank");
                             //Models 
             Branch branch = new Branch();
-            Employee employee = new Employee();
+            Employee employee = new Employee(/*("Sahil","Qasimov",2000,"filter"*/);
             Manager manager = new Manager();
 
             //Login manager and Menu 
@@ -74,14 +74,18 @@ namespace Lahiye
                                         Console.ReadKey();
                                         Console.Clear();
                                         goto Menu;
-                                        break;
+                                        
                                     case 5:
                                         Console.Clear();
-                                        branchService.HireEmployee(branch,employeeService);
+                                        Console.WriteLine("Branch Name: ");
+                                        string brName = Console.ReadLine();
+                                        Console.WriteLine("Employee Name: ");
+                                        string empName = Console.ReadLine();
+                                        branchService.HireEmployee(brName,empName);
                                         Console.ReadKey();
                                         Console.Clear();
                                         goto Menu;
-                                        break;
+                                        
                                     case 6:
                                         Console.Clear();
                                         branchService.GetProfit();
@@ -97,7 +101,7 @@ namespace Lahiye
                                         goto Menu;
                                     case 8:
                                         Console.Clear();
-                                        branchService.GetAll();
+                                        branchService.GetAllToConsole();
                                         Console.ReadKey();
                                         Console.Clear();
                                         goto Menu;

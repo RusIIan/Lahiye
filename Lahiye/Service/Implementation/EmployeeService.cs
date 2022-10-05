@@ -19,11 +19,9 @@ namespace Lahiye.Service.Implementation
 
         public void Create(Employee entity)
         {
-            Employee employee = new Employee("Ruslan","Ibrahimov",1500,"Developer");
-            Employee employee1 = new Employee("Ruslan","Ibrahimov",1500,"Developer");
-            Employee employee2 = new Employee("Ruslan","Ibrahimov",1500,"Developer");
-            _employees.Datas.Add(employee);
-            _employees.Datas.Add(employee1);
+            /*Employee employee = new Employee("","",0,"");*/
+            Employee employee2 = new Employee(/*"Ruslan","Ibrahimov",1500,"Developer"*/);
+           /* _employees.Datas.Add(employee);*/
             _employees.Datas.Add(employee2);
             Console.WriteLine("--- Create Employee ---");
             try
@@ -72,12 +70,19 @@ namespace Lahiye.Service.Implementation
             }
             
         }
-        public void GetAll()
+        public List<Employee> GetAll()
         {
-            foreach (Employee employee in _employees.Datas.Where(d=>d.SoftDelete==false))
+            foreach (Employee employee in _employees.Datas.Where(d => d.SoftDelete == false))
             {
-                Console.WriteLine(employee.Name+ " " + employee.Surname+" "+employee.Profession+" "+ employee.Salary);
+                Console.WriteLine(employee.Name + " " + employee.Surname + " " + employee.Profession + " " + employee.Salary);
             }
+            return _employees.Datas;
+            
+        }
+
+        public void GetAllToConsole()
+        {
+            throw new NotImplementedException();
         }
 
         public void Update()

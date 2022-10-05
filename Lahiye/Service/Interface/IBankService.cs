@@ -11,6 +11,7 @@ namespace Lahiye.Service.Interface
         public void Delete();
         public void Update();
         public void Get();
-        public void GetAll();
+        //public List<T> GetAll();
+        public void GetAllToConsole();
     }
 }
