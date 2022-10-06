@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Admin\\OneDrive\\Рабочий стол\\Lab\\Lahiye\\Lahiye\\Lahiye.csproj": {}
+    "C:\\Users\\Admin\\OneDrive\\Рабочий стол\\Lahiye\\Lahiye\\Lahiye.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Admin\\OneDrive\\Рабочий стол\\Lab\\Lahiye\\Lahiye\\Lahiye.csproj": {
+    "C:\\Users\\Admin\\OneDrive\\Рабочий стол\\Lahiye\\Lahiye\\Lahiye.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Admin\\OneDrive\\Рабочий стол\\Lab\\Lahiye\\Lahiye\\Lahiye.csproj",
+        "projectUniqueName": "C:\\Users\\Admin\\OneDrive\\Рабочий стол\\Lahiye\\Lahiye\\Lahiye.csproj",
         "projectName": "Lahiye",
-        "projectPath": "C:\\Users\\Admin\\OneDrive\\Рабочий стол\\Lab\\Lahiye\\Lahiye\\Lahiye.csproj",
+        "projectPath": "C:\\Users\\Admin\\OneDrive\\Рабочий стол\\Lahiye\\Lahiye\\Lahiye.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Admin\\OneDrive\\Рабочий стол\\Lab\\Lahiye\\Lahiye\\obj\\",
+        "outputPath": "C:\\Users\\Admin\\OneDrive\\Рабочий стол\\Lahiye\\Lahiye\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",

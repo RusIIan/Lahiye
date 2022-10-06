@@ -92,13 +92,21 @@ namespace Lahiye.Service.Implementation
         }
         public void HireEmployee(string branchName,string employeeName)
         {
+            try
+            {
             Branch branch = _Bank.Datas.Where(m => m.Name == branchName).FirstOrDefault();
             Employee employee = employeeService._employees.Datas.Where(e => e.Name == employeeName).FirstOrDefault();
             branch.Employees.Add(employee);
             foreach (var item in branch.Employees)
-            {
-                Console.WriteLine(item.Name);
+                {
+                    Console.Write(item.Name);
+                }
             }
+            catch (Exception)
+            {
+            Console.WriteLine("Not found Emploee: ");
+            }
+           
         }
         //we are transferring employees to branches here               
         public void TransferEmployee(Branch branch)
