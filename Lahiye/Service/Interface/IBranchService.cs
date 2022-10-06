@@ -11,7 +11,7 @@ namespace Lahiye.Service.Interface
         public void HireEmployee(string brName, string empName);
         public void GetProfit();
         public void TransferMoney();
-        public void TransferEmployee(Branch branch);
+        public void TransferEmployee(string BranName, string EmpName);
     
 }
 }

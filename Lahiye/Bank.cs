@@ -70,7 +70,11 @@ namespace Lahiye
                                     #endregion
                                     case 4:
                                         Console.Clear();
-                                        branchService.TransferEmployee(branch);
+                                        Console.WriteLine("Branch Name: ");
+                                        string tbrName = Console.ReadLine();
+                                        Console.WriteLine("Employee Name: ");
+                                        string tempName = Console.ReadLine();
+                                        branchService.TransferEmployee(tbrName,tempName);
                                         Console.ReadKey();
                                         Console.Clear();
                                         goto Menu;

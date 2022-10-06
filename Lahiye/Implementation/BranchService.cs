@@ -99,7 +99,7 @@ namespace Lahiye.Service.Implementation
             branch.Employees.Add(employee);
             foreach (var item in branch.Employees)
                 {
-                    Console.Write(item.Name);
+                    Console.Write("Name Employee: "+item.Name);
                 }
             }
             catch (Exception)
@@ -109,17 +109,17 @@ namespace Lahiye.Service.Implementation
            
         }
         //we are transferring employees to branches here               
-        public void TransferEmployee(Branch branch)
+        public void TransferEmployee(string BranName,string EmpName)
         {
-            /*Employee employee = new Employee();
-
+            Branch branch = _Bank.Datas.Where(t=>t.Name==BranName).FirstOrDefault();
+            Employee employee = employeeService._employees.Datas.Where(t=>t.Name==EmpName).FirstOrDefault();
             if (branch.Budget > employee.Salary)
             {
                 branch.Employees.Remove(employee);
                 branch.Employees.Add(employee);
                 branch.Budget -= employee.Salary;
                 Console.WriteLine($"Employee {employee.Name} {employee.Surname} successfully transtfer from {branch.Address}");
-            }*/
+            }
         }
         //we are transferring money to the employee
         public void TransferMoney()
