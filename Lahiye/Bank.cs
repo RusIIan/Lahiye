@@ -45,7 +45,6 @@ namespace Lahiye
                                 int bracnhmenu = int.Parse(Console.ReadLine());
                                 switch (bracnhmenu)
                                 {
-                                    #region
                                     case 1:
                                         Console.Clear();
                                         branchService.Create(branch);
@@ -67,14 +66,15 @@ namespace Lahiye
                                         Console.Clear();
                                         goto Menu;
                                         break;
-                                    #endregion
                                     case 4:
                                         Console.Clear();
-                                        Console.WriteLine("Branch Name: ");
-                                        string tbrName = Console.ReadLine();
                                         Console.WriteLine("Employee Name: ");
                                         string tempName = Console.ReadLine();
-                                        branchService.TransferEmployee(tbrName,tempName);
+                                        Console.WriteLine("From Branch Name: ");
+                                        string tbrName = Console.ReadLine();
+                                        Console.WriteLine("To Branch Name: ");
+                                        string text = Console.ReadLine();
+                                        branchService.TransferEmployee(tbrName,tempName,text);
                                         Console.ReadKey();
                                         Console.Clear();
                                         goto Menu;
@@ -96,7 +96,6 @@ namespace Lahiye
                                         Console.ReadKey();
                                         Console.Clear();
                                         goto Menu;
-                                    #region
                                     case 7:
                                         Console.Clear();
                                         branchService.Get();
@@ -116,7 +115,6 @@ namespace Lahiye
                                         Console.Clear();
                                         goto Menu;
                                         break;
-                                    #endregion
                                     default:
                                         Console.WriteLine("No such feature");
                                         break;
@@ -221,19 +219,6 @@ namespace Lahiye
             Console.WriteLine("5: GetAll Employee");
             Console.WriteLine("6: Created Employee");
         }
-        //public static void SeedDataBase()
-        //{
-        //    Employee employee = new Employee("Ruslan","Ibrahimov",1500,"Developer");
-        //    Employee employee1 = new Employee("Zahid","Qasimov",1000,"Xezinedar");
-        //    Employee employee2 = new Employee("Aqil","Qarayev",900,"Kassir");
-        //    Employee employee3 = new Employee("Gulu", "Nuriyeva", 1300, "Manacer");
-
-        //    List<Employee> employees = new List<Employee>() { employee, employee1, employee2, employee3 };
-        //    var name = Console.ReadLine();
-
-        //    Employee emp = employees.FirstOrDefault(x => x.Name == name);
-
-        //    employees.Remove(emp);
-        //}
+    
     }
 }

@@ -3,6 +3,7 @@ using Lahiye.Models;
 using Lahiye.Service.Interface;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 
@@ -80,14 +81,16 @@ namespace Lahiye.Service.Implementation
 
         public void GetProfit()
         {
-            Branch branch = new Branch();
-            Console.Write("Calculate profit and loss:");
-            Console.Write("Input Selling Price: ");
-            decimal getprofil = 0;
-            decimal sellprice = decimal.Parse(Console.ReadLine());
-            branch.Employees.ForEach(c=>sellprice+=c.Salary);
-            getprofil = branch.Budget - sellprice;
-            Console.WriteLine($"Profit of the {branch.Name}  branch in {getprofil}");
+            Console.WriteLine("Enter branchName: ");
+            string branchName = Console.ReadLine();
+            Branch branch = _Bank.Datas.Find(g=>g.Name==branchName);
+            decimal num = 0;
+            foreach (var employee in employeeService._employees.Datas)
+            {
+                num += employee.Salary;
+            }
+            decimal profit = branch.Budget - num;
+            Console.WriteLine("Remaining budget: "+profit);
             
         }
         public void HireEmployee(string branchName,string employeeName)
@@ -99,7 +102,7 @@ namespace Lahiye.Service.Implementation
             branch.Employees.Add(employee);
             foreach (var item in branch.Employees)
                 {
-                    Console.Write("Name Employee: "+item.Name);
+                    Console.Write("Employee added to branch: " + item.Name);
                 }
             }
             catch (Exception)
@@ -109,16 +112,18 @@ namespace Lahiye.Service.Implementation
            
         }
         //we are transferring employees to branches here               
-        public void TransferEmployee(string BranName,string EmpName)
+        public void TransferEmployee(string BranName,string text,string EmpName)
         {
-            Branch branch = _Bank.Datas.Where(t=>t.Name==BranName).FirstOrDefault();
-            Employee employee = employeeService._employees.Datas.Where(t=>t.Name==EmpName).FirstOrDefault();
-            if (branch.Budget > employee.Salary)
+            Branch branch0 = _Bank.Datas.Where(t=>t.Name==BranName).FirstOrDefault();
+            Employee employee = employeeService._employees.Datas.Find(t=>t.Name==EmpName);
+            Branch branch1 = _Bank.Datas.Where(t=>t.Name==text).FirstOrDefault();
+
+            if (branch0.Budget > employee.Salary)
             {
-                branch.Employees.Remove(employee);
-                branch.Employees.Add(employee);
-                branch.Budget -= employee.Salary;
-                Console.WriteLine($"Employee {employee.Name} {employee.Surname} successfully transtfer from {branch.Address}");
+                branch0.Employees.Remove(employee);
+                branch1.Employees.Add(employee);
+                branch1.Budget -= employee.Salary;
+                Console.WriteLine($"Employee {employee.Name} {employee.Surname} successfully transtfer from {branch1.Address}");
             }
         }
         //we are transferring money to the employee
@@ -159,10 +164,5 @@ namespace Lahiye.Service.Implementation
             Console.Write("New Address: ");
             branch.Address = Console.ReadLine();
         }
-
-       /* public List<Branch> GetAll()
-        {
-            
-        }*/
     }
 }
