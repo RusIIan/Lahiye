@@ -126,13 +126,13 @@ namespace Lahiye.Service.Implementation
             Employee employee = employeeService._employees.Datas.Find(t=>t.Name==EmpName);
             Branch branch1 = _Bank.Datas.Where(t=>t.Name==text).FirstOrDefault();
 
-            if (branch0.Budget > employee.Salary)
-            {
-                branch0.Employees.Remove(employee);
-                branch1.Employees.Add(employee);
-                branch1.Budget -= employee.Salary;
-                Console.WriteLine($"Employee {employee.Name} {employee.Surname} successfully transtfer from {branch1.Address}");
-            }
+             if (branch0.Budget>employee.Salary)
+             {
+                 branch0.Employees.Remove(employee);
+                 branch1.Employees.Add(employee);
+                 branch1.Budget -= employee.Salary;
+                 Console.WriteLine($"Employee {employee.Name} {employee.Surname} successfully transtfer from {branch1.Address}");
+             }
         }
         //we are transferring money to the employee
         public void TransferMoney()

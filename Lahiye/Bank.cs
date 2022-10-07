@@ -73,8 +73,8 @@ namespace Lahiye
                                         Console.WriteLine("From Branch Name: ");
                                         string tbrName = Console.ReadLine();
                                         Console.WriteLine("To Branch Name: ");
-                                        string text = Console.ReadLine();
-                                        branchService.TransferEmployee(tbrName,tempName,text);
+                                        string tnbrName = Console.ReadLine();
+                                        branchService.TransferEmployee(tbrName,tempName, tnbrName);
                                         Console.ReadKey();
                                         Console.Clear();
                                         goto Menu;
