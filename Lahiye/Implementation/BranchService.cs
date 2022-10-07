@@ -81,16 +81,24 @@ namespace Lahiye.Service.Implementation
 
         public void GetProfit()
         {
-            Console.WriteLine("Enter branchName: ");
-            string branchName = Console.ReadLine();
-            Branch branch = _Bank.Datas.Find(g=>g.Name==branchName);
-            decimal num = 0;
-            foreach (var employee in employeeService._employees.Datas)
+            try
             {
-                num += employee.Salary;
+                Console.WriteLine("Enter branchName: ");
+                string branchName = Console.ReadLine();
+                Branch branch = _Bank.Datas.Find(g => g.Name == branchName);
+                decimal num = 0;
+                foreach (var employee in employeeService._employees.Datas)
+                {
+                    num += employee.Salary;
+                }
+                decimal profit = branch.Budget - num;
+                Console.WriteLine("Remaining budget: " + profit);
             }
-            decimal profit = branch.Budget - num;
-            Console.WriteLine("Remaining budget: "+profit);
+            catch (Exception)
+            {
+                Console.WriteLine("Incorrectly spelled branches or employees");
+            }
+          
             
         }
         public void HireEmployee(string branchName,string employeeName)
@@ -129,6 +137,8 @@ namespace Lahiye.Service.Implementation
         //we are transferring money to the employee
         public void TransferMoney()
         {
+            try
+            {
             Branch branch = new Branch();
             Console.WriteLine("---Trasfer Money---");
             Console.Write("Please enter your Name: ");
@@ -152,10 +162,16 @@ namespace Lahiye.Service.Implementation
                     break;
                 }
             }
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Incorect Name or Numbers");
+            }
         }
         //we are changing the current names, budget, address
         public void Update()
         {
+
             Console.Write("Name: ");
             string name = Console.ReadLine();
             Branch branch = _Bank.Datas.Find(u=>u.Name.ToLower().Trim()==name.Trim().ToLower());

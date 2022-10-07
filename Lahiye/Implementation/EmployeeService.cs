@@ -19,9 +19,7 @@ namespace Lahiye.Service.Implementation
 
         public void Create(Employee entity)
         {
-            /*Employee employee = new Employee("","",0,"");*/
-            Employee employee = new Employee(/*"Ruslan","Ibrahimov",1500,"Developer"*/);
-           /* _employees.Datas.Add(employee);*/
+            Employee employee = new Employee();
             _employees.Datas.Add(employee);
             Console.WriteLine("--- Create Employee ---");
             try
