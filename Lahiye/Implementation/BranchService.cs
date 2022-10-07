@@ -171,7 +171,8 @@ namespace Lahiye.Service.Implementation
         //we are changing the current names, budget, address
         public void Update()
         {
-
+            try
+            {
             Console.Write("Name: ");
             string name = Console.ReadLine();
             Branch branch = _Bank.Datas.Find(u=>u.Name.ToLower().Trim()==name.Trim().ToLower());
@@ -179,6 +180,11 @@ namespace Lahiye.Service.Implementation
             branch.Budget = decimal.Parse(Console.ReadLine());
             Console.Write("New Address: ");
             branch.Address = Console.ReadLine();
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Incorrect Update");
+            }
         }
     }
 }
