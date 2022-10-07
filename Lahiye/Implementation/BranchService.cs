@@ -20,10 +20,9 @@ namespace Lahiye.Service.Implementation
             employeeService = _employeeService;
         }
         //We create List Employee
-        public void Create(Branch entity )
+        public void Create()
         {
             Branch branch = new Branch();
-                _Bank.Datas.Add(branch);
             try
             {
                 Console.WriteLine("--- Create Branch ---");
@@ -37,6 +36,7 @@ namespace Lahiye.Service.Implementation
                 branch.Budget = budger;
                 branch.Address = address;
                 branch.Employees = new List<Employee>();
+            _Bank.Datas.Add(branch);
             }
             catch (Exception)
             {

@@ -47,7 +47,7 @@ namespace Lahiye
                                 {
                                     case 1:
                                         Console.Clear();
-                                        branchService.Create(branch);
+                                        branchService.Create();
                                         Console.ReadKey();
                                         Console.Clear();
                                         goto Menu;
@@ -128,7 +128,7 @@ namespace Lahiye
                                 {
                                     case 1:
                                         Console.Clear();
-                                        employeeService.Create(employee);
+                                        employeeService.Create();
                                         Console.WriteLine("******************************************************************************");
                                         foreach (Employee employee1 in employeeService._employees.Datas)
                                         {

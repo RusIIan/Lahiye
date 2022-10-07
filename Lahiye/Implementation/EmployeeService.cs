@@ -17,10 +17,9 @@ namespace Lahiye.Service.Implementation
             _employees = new Bank_G<Employee>();
         }
 
-        public void Create(Employee entity)
+        public void Create()
         {
             Employee employee = new Employee();
-            _employees.Datas.Add(employee);
             Console.WriteLine("--- Create Employee ---");
             try
             {
@@ -37,6 +36,7 @@ namespace Lahiye.Service.Implementation
                 employee.Salary = salary;
                 employee.Profession = profession;
                 Console.Clear();
+            _employees.Datas.Add(employee);
             }
             catch (FormatException)
             {
