@@ -16,8 +16,6 @@ namespace Lahiye
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("                                              Welcome the Pasha Bank");
                             //Models 
-            Branch branch = new Branch();
-            Employee employee = new Employee(/*("Sahil","Qasimov",2000,"filter"*/);
             Manager manager = new Manager();
 
             //Login manager and Menu 
@@ -48,70 +46,51 @@ namespace Lahiye
                                     case 1:
                                         Console.Clear();
                                         branchService.Create();
-                                        Console.ReadKey();
                                         Console.Clear();
                                         goto Menu;
                                         break;
                                     case 2:
                                         Console.Clear();
                                         branchService.Delete();
-                                        Console.ReadKey();
                                         Console.Clear();
                                         goto Menu;
                                         break;
                                     case 3:
                                         Console.Clear();
                                         branchService.TransferMoney();
-                                        Console.ReadKey();
                                         Console.Clear();
                                         goto Menu;
                                         break;
                                     case 4:
                                         Console.Clear();
-                                        Console.WriteLine("Employee Name: ");
-                                        string tempName = Console.ReadLine();
-                                        Console.WriteLine("From Branch Name: ");
-                                        string tbrName = Console.ReadLine();
-                                        Console.WriteLine("To Branch Name: ");
-                                        string tnbrName = Console.ReadLine();
-                                        branchService.TransferEmployee(tbrName,tempName, tnbrName);
-                                        Console.ReadKey();
+                                        branchService.TransferEmployee();
                                         Console.Clear();
                                         goto Menu;
                                         
                                     case 5:
                                         Console.Clear();
-                                        Console.WriteLine("Branch Name: ");
-                                        string brName = Console.ReadLine();
-                                        Console.WriteLine("Employee Name: ");
-                                        string empName = Console.ReadLine();
-                                        branchService.HireEmployee(brName,empName);
-                                        Console.ReadKey();
+                                        branchService.HireEmployee();
                                         Console.Clear();
                                         goto Menu;
                                         
                                     case 6:
                                         Console.Clear();
                                         branchService.GetProfit();
-                                        Console.ReadKey();
                                         Console.Clear();
                                         goto Menu;
                                     case 7:
                                         Console.Clear();
                                         branchService.Get();
-                                        Console.ReadKey();
                                         Console.Clear();
                                         goto Menu;
                                     case 8:
                                         Console.Clear();
                                         branchService.GetAllToConsole();
-                                        Console.ReadKey();
                                         Console.Clear();
                                         goto Menu;
                                     case 9:
                                         Console.Clear();
                                         branchService.Update();
-                                        Console.ReadKey();
                                         Console.Clear();
                                         goto Menu;
                                         break;

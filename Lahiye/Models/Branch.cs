@@ -9,6 +9,6 @@ namespace Lahiye.Models
         //Filial
         public decimal Budget {get; set;}
         public string Address {get; set;}
-        public List<Employee> Employees {get; set;}
+        public List<Employee> Employees { get; set; }
     }
 }

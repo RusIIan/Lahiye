@@ -11,8 +11,8 @@ namespace Lahiye.Service.Implementation
 {
     public class BranchService : IBankService<Branch>, IBranchService
     {
-        private EmployeeService employeeService;
-        public Bank_G<Branch> _Bank;
+        public EmployeeService employeeService;
+        private  Bank_G<Branch> _Bank;
 
         public BranchService(EmployeeService _employeeService)
         {
@@ -56,18 +56,13 @@ namespace Lahiye.Service.Implementation
               //Filiali adla Tapir
         public void Get()
         {
-            try
-            {
+            
                 Console.Write("Name: ");
                 string entity = Console.ReadLine();
                 Branch branch = _Bank.Datas.Find(g => g.Name.Contains(entity.Trim())
                 ||g.Budget.ToString().Contains(entity.Trim())||g.Address.Contains(entity.Trim()));
                 Console.WriteLine($"Name: {branch.Name}  Budget: {branch.Budget}  Address: {branch.Address}");
-            }
-            catch (FormatException)
-            {
-                Console.WriteLine("Branch not found");
-            }
+            
         }
           //butun branchi teqdim edir
         public void GetAllToConsole()
@@ -101,13 +96,18 @@ namespace Lahiye.Service.Implementation
           
             
         }
-        public void HireEmployee(string branchName,string employeeName)
+        public void HireEmployee()
         {
             try
             {
+            Console.WriteLine("Branch Name: ");
+            string branchName = Console.ReadLine();
+            Console.WriteLine("Employee Name: ");
+            string employeeName = Console.ReadLine();
             Branch branch = _Bank.Datas.Where(m => m.Name == branchName).FirstOrDefault();
             Employee employee = employeeService._employees.Datas.Where(e => e.Name == employeeName).FirstOrDefault();
             branch.Employees.Add(employee);
+            employee.branch = branch;
             foreach (var item in branch.Employees)
                 {
                     Console.Write("Employee added to branch: " + item.Name);
@@ -120,18 +120,24 @@ namespace Lahiye.Service.Implementation
            
         }
         //we are transferring employees to branches here               
-        public void TransferEmployee(string BranName,string text,string EmpName)
+        public void TransferEmployee()
         {
-            Branch branch0 = _Bank.Datas.Where(t=>t.Name==BranName).FirstOrDefault();
-            Employee employee = employeeService._employees.Datas.Find(t=>t.Name==EmpName);
-            Branch branch1 = _Bank.Datas.Where(t=>t.Name==text).FirstOrDefault();
+            Console.WriteLine("From Branch Name: ");
+            string branName = Console.ReadLine();
+            Console.WriteLine("To Branch Name: ");
+            string bran1Name = Console.ReadLine();
+            Console.WriteLine("Employee Name: ");
+            string EmpName = Console.ReadLine();
+            Branch frombranch = _Bank.Datas.Where(t=>t.Name== branName).FirstOrDefault();
+            Employee employee = frombranch.Employees.Find(t => t.Name.Trim().ToLower() == EmpName.Trim().ToLower());
+            Branch tobranch = _Bank.Datas.Where(t=>t.Name== bran1Name).FirstOrDefault();
 
-             if (branch0.Budget>employee.Salary)
+            if (frombranch.Budget>employee.Salary)
              {
-                 branch0.Employees.Remove(employee);
-                 branch1.Employees.Add(employee);
-                 branch1.Budget -= employee.Salary;
-                 Console.WriteLine($"Employee {employee.Name} {employee.Surname} successfully transtfer from {branch1.Address}");
+                frombranch.Employees.Remove(employee);
+                tobranch.Employees.Add(employee);
+                tobranch.Budget -= employee.Salary;
+                 Console.WriteLine($"Employee {employee.Name} {employee.Surname} successfully transtfer from {tobranch.Address}");
              }
         }
         //we are transferring money to the employee

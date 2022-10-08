@@ -10,7 +10,7 @@ namespace Lahiye.Service.Implementation
 {
     public class EmployeeService:IBankService<Employee>,IEmployeeService
     {
-        public Bank_G<Employee> _employees;
+        public  Bank_G<Employee> _employees;
 
         public EmployeeService()
         {
@@ -54,19 +54,21 @@ namespace Lahiye.Service.Implementation
         }
         public void Get()
         {
-            try
-            {
+           
                 Console.Write("Name: ");
                 string entity = Console.ReadLine();
                 Employee employee = _employees.Datas.Find(x => x.Name.Contains(entity.Trim())
                  || x.Surname.Contains(entity.Trim()) || x.Profession.Contains(entity.Trim()));
-                Console.WriteLine($"Name: {employee.Name}  Surname: {employee.Surname}  Profession: {employee.Profession}  Salary:{employee.Salary}");
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Employee not found");
-            }
-            
+                    if (employee.SoftDelete==true)
+                    {
+                        Console.WriteLine("Employee not found");
+                    }
+                    else if (employee.SoftDelete==true)
+                    {
+                        Console.WriteLine($"Name: {employee.Name}  Surname: {employee.Surname}  Profession: {employee.Profession}  Salary:{employee.Salary}");
+                    }
+
+
         }
         public List<Employee> GetAll()
         {
