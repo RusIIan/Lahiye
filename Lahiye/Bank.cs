@@ -70,6 +70,7 @@ namespace Lahiye
                                     case 5:
                                         Console.Clear();
                                         branchService.HireEmployee();
+                                        Console.ReadKey();
                                         Console.Clear();
                                         goto Menu;
                                         
